@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Eat_It</string>
+    <string name="title">BECOME A MEMBER</string>
+    <string name="title1">PERSONAL INFORMATION</string>
+    <string name="title2">USER CREDENTIALS</string>
+    <string name="Fname">Full Name</string>
+    <string name="Lname">Last Name</string>
+    <string name="email">Email Address</string>
+    <string name="phone">Contact Number</string>
+    <string name="pwd">Password</string>
+    <string name="RegBtn">CREATE ACCOUNT</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="addBtn">Order</string>
+    <string name="cart_edit">Change</string>
+    <string name="order_now">Order Now</string>
+    <string name="delete">Delete</string>
+    <string name="name_cus">Customer Name</string>
+    <string name="phone_cus">Contact Number</string>
+    <string name="add_cus_">Delivery Address</string>
+    <string name="postal_cus">Postal Code</string>
+    <string name="email_cus">Email</string>
+    <string name="btn_con">Confirm</string>
+    <string name="topic_1_1">Delivery Details</string>
+    <string name="okay">Cash On Delivery</string>
+    <string name="cash_">Credit Or Debit Card</string>
+    <string name="cr_name">Owner Name</string>
+    <string name="cr_number">Card Number</string>
+    <string name="cr_ex">Exp. Date</string>
+    <string name="cr_cvc">CVC/CVV</string>
+    <string name="cr_de">Card Details</string>
+    <string name="add">Add</string>
+
+</resources>
