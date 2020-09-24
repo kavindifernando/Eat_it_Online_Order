@@ -11,6 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,18 +22,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button login1;
     TextView skipnow;
     TextView registernow;
+    TextView iamanadmin;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         login1= findViewById(R.id.login1);
         skipnow= (TextView) findViewById(R.id.skipnow);
         registernow = (TextView) findViewById(R.id.registernow);
+        iamanadmin = (TextView) findViewById(R.id.iamanadmin);
 
         login1.setOnClickListener(this);
         skipnow.setOnClickListener(this);
         registernow.setOnClickListener(this);
-
+iamanadmin.setOnClickListener(this);
 
 
     }
@@ -49,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.skipnow:
                 Intent intent3 = new Intent(MainActivity.this, Menu.class);
                 startActivity(intent3);
+                break;
+            case R.id.iamanadmin:
+                Intent intent4 = new Intent(MainActivity.this, Adminlogin.class);
+                startActivity(intent4);
                 break;
             default:
         }

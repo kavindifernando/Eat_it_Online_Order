@@ -37,5 +37,9 @@
     <string name="cr_cvc">CVC/CVV</string>
     <string name="cr_de">Card Details</string>
     <string name="add">Add</string>
+    <string name="Adm_Home_Header">Welcome Admin Portal</string>
+    <string name="Adm_food">Food</string>
+    <string name="Adm_customer">Customer</string>
+    <string name="Adm_Drivers">Driver</string>
 
 </resources>

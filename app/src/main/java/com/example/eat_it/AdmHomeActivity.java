@@ -23,7 +23,7 @@ public class AdmHomeActivity extends AppCompatActivity {
         FoodItemBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdmHomeActivity.this, AdmCategoryActivity.class);
+                Intent intent = new Intent(AdmHomeActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
