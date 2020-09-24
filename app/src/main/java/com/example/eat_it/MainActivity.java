@@ -54,7 +54,7 @@ iamanadmin.setOnClickListener(this);
                 startActivity(intent2);
                 break;
             case R.id.skipnow:
-                Intent intent3 = new Intent(MainActivity.this, Menu.class);
+                Intent intent3 = new Intent(MainActivity.this, dr_signupui.class);
                 startActivity(intent3);
                 break;
             case R.id.iamanadmin:
