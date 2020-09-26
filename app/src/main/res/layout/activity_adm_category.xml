@@ -7,159 +7,159 @@
     android:background="@drawable/interface1"
     tools:context=".AdmCategoryActivity">
 
-    <TextView
-        android:id="@+id/category_header_txtView"
-        android:layout_width="142dp"
-        android:layout_height="39dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="196dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="73dp"
-        android:text="@string/Adm_Category_Header"
-        android:textColor="#BF007A"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.665"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/category_header_txtView"-->
+<!--        android:layout_width="142dp"-->
+<!--        android:layout_height="39dp"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginStart="196dp"-->
+<!--        android:layout_marginLeft="150dp"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:layout_marginEnd="73dp"-->
+<!--        android:text="@string/Adm_Category_Header"-->
+<!--        android:textColor="#BF007A"-->
+<!--        android:textSize="30sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.665"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/category_header2_txtView"
-        android:layout_width="314dp"
-        android:layout_height="62dp"
-        android:layout_below="@+id/category_header_txtView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="-9dp"
-        android:text="@string/Adm_Category_Header2"
-        android:textColor="#BF007A"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.628"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_header_txtView" />
+<!--    <TextView-->
+<!--        android:id="@+id/category_header2_txtView"-->
+<!--        android:layout_width="314dp"-->
+<!--        android:layout_height="62dp"-->
+<!--        android:layout_below="@+id/category_header_txtView"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginLeft="50dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:layout_marginEnd="-9dp"-->
+<!--        android:text="@string/Adm_Category_Header2"-->
+<!--        android:textColor="#BF007A"-->
+<!--        android:textSize="30sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.628"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/category_header_txtView" />-->
 
-    <LinearLayout
-        android:id="@+id/linear1_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_below="@id/category_header2_txtView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linear1_category_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="72dp"-->
+<!--        android:layout_below="@id/category_header2_txtView"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
 
-        <TextView
-            android:id="@+id/category1_txtView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:text="@string/Adm_Category_pizza"
-            android:textColor="#020202"
-            android:textSize="20sp" />
-
-
-        <ImageView
-            android:id="@+id/ad_pizza"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginLeft="80dp"
-            android:src="@drawable/pizza"></ImageView>
+<!--        <TextView-->
+<!--            android:id="@+id/category1_txtView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="0dp"-->
+<!--            android:text="@string/Adm_Category_pizza"-->
+<!--            android:textColor="#020202"-->
+<!--            android:textSize="20sp" />-->
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear2_category_layout"
-        android:layout_width="392dp"
-        android:layout_height="66dp"
-        android:layout_below="@id/linear1_category_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/category2_txtView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:text="@string/Adm_Category_ShortEats"
-            android:textColor="#020202"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/ad_shortEats"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginLeft="50dp"
-            android:src="@drawable/sandwiches">
-
-        </ImageView>
+<!--        <ImageView-->
+<!--            android:id="@+id/ad_pizza"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_marginLeft="80dp"-->
+<!--            android:src="@drawable/pizza"></ImageView>-->
 
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:id="@+id/linear3_category_layout"
-        android:layout_width="386dp"
-        android:layout_height="73dp"
-        android:layout_below="@id/linear2_category_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linear2_category_layout"-->
+<!--        android:layout_width="392dp"-->
+<!--        android:layout_height="66dp"-->
+<!--        android:layout_below="@id/linear1_category_layout"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
 
-        <TextView
-            android:id="@+id/category3_txtView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Adm_Category_Beverages"
-            android:textColor="#020202"
-            android:textSize="20sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/category2_txtView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="0dp"-->
+<!--            android:text="@string/Adm_Category_ShortEats"-->
+<!--            android:textColor="#020202"-->
+<!--            android:textSize="20sp" />-->
 
-        <ImageView
-            android:id="@+id/ad_beverages"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginLeft="50dp"
-            android:src="@drawable/drinks">
+<!--        <ImageView-->
+<!--            android:id="@+id/ad_shortEats"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_marginLeft="50dp"-->
+<!--            android:src="@drawable/sandwiches">-->
 
-        </ImageView>
+<!--        </ImageView>-->
 
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:id="@+id/linear4_category_layout"
-        android:layout_width="401dp"
-        android:layout_height="74dp"
-        android:layout_below="@id/linear3_category_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linear3_category_layout"-->
+<!--        android:layout_width="386dp"-->
+<!--        android:layout_height="73dp"-->
+<!--        android:layout_below="@id/linear2_category_layout"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
 
-        <TextView
-            android:id="@+id/category4_txtView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Adm_Category_Desserts"
-            android:textColor="#020202"
-            android:textSize="20sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/category3_txtView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/Adm_Category_Beverages"-->
+<!--            android:textColor="#020202"-->
+<!--            android:textSize="20sp" />-->
 
-        <ImageView
-            android:id="@+id/ad_desserts"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginLeft="60dp"
-            android:src="@drawable/burgers">
+<!--        <ImageView-->
+<!--            android:id="@+id/ad_beverages"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_marginLeft="50dp"-->
+<!--            android:src="@drawable/drinks">-->
 
-        </ImageView>
-    </LinearLayout>
+<!--        </ImageView>-->
+
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linear4_category_layout"-->
+<!--        android:layout_width="401dp"-->
+<!--        android:layout_height="74dp"-->
+<!--        android:layout_below="@id/linear3_category_layout"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/category4_txtView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/Adm_Category_Desserts"-->
+<!--            android:textColor="#020202"-->
+<!--            android:textSize="20sp" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/ad_desserts"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_marginLeft="60dp"-->
+<!--            android:src="@drawable/burgers">-->
+
+<!--        </ImageView>-->
+<!--    </LinearLayout>-->
 
 </RelativeLayout>
