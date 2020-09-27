@@ -128,4 +128,19 @@
     <!--        app:layout_constraintStart_toEndOf="@+id/remove2"-->
     <!--        app:layout_constraintTop_toBottomOf="@+id/qunti3" />-->
 
+    <Button
+        android:id="@+id/add_to_cart_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="94dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginBottom="86dp"
+        android:text="@string/order_now"
+        android:background="@drawable/button3"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/number_btn"
+        />
+
 </RelativeLayout>
