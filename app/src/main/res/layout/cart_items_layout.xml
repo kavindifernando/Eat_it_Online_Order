@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/cart_food_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_weight="0.11"
+            />
+
+        <TextView
+            android:id="@+id/cart_food_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/cart_food_image"
+            android:layout_toRightOf="@id/cart_food_image"
+            android:text="Price"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/cart_food_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_toEndOf="@+id/cart_food_image"
+            android:layout_below="@id/cart_food_name"
+
+            android:layout_toRightOf="@id/cart_food_image"
+
+            android:text="Price"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/cart_food_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/cart_food_image"
+            android:layout_below="@id/cart_food_price"
+
+            android:layout_toRightOf="@id/cart_food_image"
+            android:text="TextView"
+            android:textSize="20dp"/>
+
+        <Button
+            android:id="@+id/confirm_to_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/cart_food_image"
+            android:layout_below="@id/cart_food_quantity"
+
+            android:layout_toRightOf="@id/cart_food_image"
+            android:text="Button"
+            android:textSize="20dp"/>
+
+        <Button
+            android:id="@+id/edit_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/confirm_to_cart"
+            android:layout_below="@id/cart_food_quantity"
+
+            android:layout_toRightOf="@id/confirm_to_cart"
+            android:text="Button"
+            android:textSize="20dp"/>
+
+
+    </RelativeLayout>
+</RelativeLayout>

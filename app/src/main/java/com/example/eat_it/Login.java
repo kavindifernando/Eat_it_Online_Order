@@ -96,7 +96,10 @@ public class Login extends AppCompatActivity {
                             ladingBar.dismiss();
 
                             Intent intent3 = new Intent(Login.this, Userprofile.class);
+                            Prevalent.currentOnlineCustomer=customerData;
                             startActivity(intent3);
+
+
                         }
                     }
 

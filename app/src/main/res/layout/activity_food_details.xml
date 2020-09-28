@@ -97,19 +97,19 @@
         android:layout_marginTop="10dp">
 
     </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
-    <!--   <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <!--       android:id="@+id/add_foods_To_cart"-->
-    <!--       android:layout_width="wrap_content"-->
-    <!--       android:layout_height="wrap_content"-->
-    <!--       android:elevation="6dp"-->
-    <!--       android:backgroundTint="@color/white"-->
-    <!--       android:src="@drawable/shopping"-->
+<!--       <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--           android:id="@+id/add_foods_To_cart"-->
+<!--           android:layout_width="wrap_content"-->
+<!--           android:layout_height="wrap_content"-->
+<!--           android:elevation="6dp"-->
+<!--           android:backgroundTint="@color/white"-->
+<!--           android:src="@drawable/shopping"-->
 
-    <!--       android:layout_alignParentBottom="true"-->
-    <!--       android:layout_alignParentRight="true"-->
-    <!--       android:layout_margin="15dp"-->
+<!--           android:layout_alignParentBottom="true"-->
+<!--           android:layout_alignParentRight="true"-->
+<!--           android:layout_margin="15dp"-->
 
-    <!--       ></com.google.android.material.floatingactionbutton.FloatingActionButton>-->
+<!--           ></com.google.android.material.floatingactionbutton.FloatingActionButton>-->
 
 
     <!--    <Button-->
@@ -139,8 +139,27 @@
         android:text="@string/order_now"
         android:background="@drawable/button3"
         android:textColor="@color/white"
+
+        android:layout_below="@+id/number_btn"
+        />
+    <Button
+        android:id="@+id/go_to_cart"
+
+        android:text="Go To Cart"
+        android:background="@drawable/button3"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/number_btn"
+
+        android:layout_marginTop="94dp"
+        android:layout_marginEnd="99dp"
+
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_toRightOf="@id/add_to_cart_button"
         />
 
 </RelativeLayout>

@@ -45,6 +45,7 @@ public class Menu extends AppCompatActivity {
                 new FirebaseRecyclerOptions.Builder<Foods>()
                         .setQuery(FoodsRef,Foods.class)
                         .build();
+
         FirebaseRecyclerAdapter<Foods, ProductViewHolder> adapter=
                 new FirebaseRecyclerAdapter<Foods, ProductViewHolder>(options) {
                     @Override

@@ -29,9 +29,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class FoodDetails extends AppCompatActivity {
+import io.paperdb.Paper;
+
+public class FoodDetails extends AppCompatActivity implements View.OnClickListener {
     // private FloatingActionButton addToCart;
-    private Button addToCart;
+    private Button addToCart,goToCart;
     private ImageView productDetailsImage;
     private ElegantNumberButton numberButton1;
     private TextView productNameDetails,productDescriptionDetails,productPriceDetails;
@@ -45,19 +47,18 @@ public class FoodDetails extends AppCompatActivity {
 
         //addToCart = (FloatingActionButton) findViewById(R.id.add_foods_To_cart);
         addToCart = (Button) findViewById(R.id.add_to_cart_button);
+        goToCart = (Button) findViewById(R.id.go_to_cart);
         numberButton1 =(ElegantNumberButton) findViewById(R.id.number_btn);
         productDetailsImage=(ImageView) findViewById(R.id.product_details_image);
         productNameDetails =(TextView) findViewById(R.id.product_details_name);
         productDescriptionDetails =(TextView)findViewById(R.id.product_details_description);
         productPriceDetails =(TextView)findViewById(R.id.product_details_price);
-
+        addToCart.setOnClickListener(this);
+        goToCart.setOnClickListener(this);
         getFoodDetails(foodID);
-        addToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addingToCartList();
-            }
-        });
+
+
+
     }
     private void addingToCartList() {
         String saveCurrentTime;
@@ -71,7 +72,7 @@ public class FoodDetails extends AppCompatActivity {
         SimpleDateFormat currentTime=new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime =currentDate.format(calForDate.getTime());
 
-        final DatabaseReference cartListRef= FirebaseDatabase.getInstance().getReference().child("Cart List");
+        final DatabaseReference cartListRef= FirebaseDatabase.getInstance().getReference().child("CartList");
 
         final HashMap<String,Object> cartMap=new HashMap<>();
 
@@ -83,6 +84,7 @@ public class FoodDetails extends AppCompatActivity {
         cartMap.put("quantity",numberButton1.getNumber());
 
         cartListRef.child("Customer View").child(Prevalent.currentOnlineCustomer.getPhone())
+                //.child("Customer").child("phone")
                 .child("Foods").child(foodID)
                 .updateChildren(cartMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -90,6 +92,7 @@ public class FoodDetails extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
                             cartListRef.child("Admin View").child(Prevalent.currentOnlineCustomer.getPhone())
+                                    //.child("Customer").child("phone")
                                     .child("Foods").child(foodID)
                                     .updateChildren(cartMap)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -126,5 +129,19 @@ public class FoodDetails extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.add_to_cart_button:
+                addingToCartList();
+                break;
+            case R.id.go_to_cart:
+                Intent intent2 = new Intent(FoodDetails.this, Cart.class);
+                startActivity(intent2);
+                break;
+
+            default:}
     }
 }
