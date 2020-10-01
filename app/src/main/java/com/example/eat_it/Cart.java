@@ -1,20 +1,26 @@
 package com.example.eat_it;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.eat_it_onilne_order.CartList;
+import com.example.eat_it.Model.CartList;
 import com.example.eat_it.Prevalent.Prevalent;
 import com.example.eat_it.ViewHolder.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -24,6 +30,7 @@ public class Cart extends AppCompatActivity {
    private RecyclerView.LayoutManager layoutManager;
     private Button confirmToCartAll;
     private TextView textTotalAmount;
+    private  int overTotalPrice=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +41,19 @@ public class Cart extends AppCompatActivity {
         layoutManager =new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        confirmToCartAll =(Button) findViewById(R.id.add_to_cart_button);
+        confirmToCartAll =(Button) findViewById(R.id.confirm_to_cart_all);
         textTotalAmount = (TextView) findViewById(R.id.Total_Price_k);
+
+        confirmToCartAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // textTotalAmount.setText("Total Price = "+ String.valueOf(overTotalPrice));
+                Intent intent = new Intent(Cart.this, ConfirmOrder.class);
+                intent.putExtra("Total Price",String.valueOf(overTotalPrice));
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     @Override
     protected void onStart() {
@@ -48,11 +66,57 @@ public class Cart extends AppCompatActivity {
                 .build();
         FirebaseRecyclerAdapter<CartList, CartViewHolder> adapter= new FirebaseRecyclerAdapter<CartList, CartViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull CartList model) {
+            protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final CartList model) {
                 holder.txtCartFoodName.setText(model.getFname());
                 holder.txtCartFoodPrice.setText(model.getPrice());
                 holder.txtCartFoodQuantity.setText(model.getQuantity());
                 //Picasso.get().load(Foods.getImage()).into(foodImageView);
+                int oneTypeModelTotalPrice = ((Integer.parseInt(model.getPrice()))) * Integer.parseInt(model.getQuantity());
+                overTotalPrice = overTotalPrice + oneTypeModelTotalPrice;
+                holder.itemView.setOnClickListener(new View.OnClickListener(){
+
+                    @Override
+                    public void onClick(View view) {
+                        CharSequence option []=new CharSequence[]
+                                {
+                                        "Remove",
+                                        "Delete"
+                                };
+                        AlertDialog.Builder builder=new AlertDialog.Builder(Cart.this);
+                        builder.setTitle("Cart Options");
+                        builder.setItems(option, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                if(i==0)
+                                {
+                                    Intent intent=new Intent (Cart.this,FoodDetails.class);
+                                    intent.putExtra("fid",model.getFid());
+                                    startActivity(intent);
+                                }
+                                if (i==1){
+                                    cartListRef.child("Customer View")
+                                            .child(Prevalent.currentOnlineCustomer.getPhone())
+                                            .child("Foods")
+                                            .child(model.getFid())
+                                            .removeValue()
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()){
+                                                        Toast.makeText(Cart.this,"removed Successfully",Toast.LENGTH_SHORT).show();
+                                                        Intent intent=new Intent (Cart.this,Cart.class);
+
+                                                        startActivity(intent);
+                                                    }
+                                                }
+                                            });
+                                }
+
+                            }
+                        });
+                        builder.show();
+                    }
+                });
             }
 
             @NonNull
