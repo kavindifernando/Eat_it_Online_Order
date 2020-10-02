@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:background="@color/red">
         <TextView
-            android:id="@+id/Total_Price_k"
+            android:id="@+id/total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -32,13 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/layout_2"
-        android:layout_above="@id/confirm_to_cart_all"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_above="@id/next_process_button"></androidx.recyclerview.widget.RecyclerView>
     <Button
-        android:id="@+id/confirm_to_cart_all"
+        android:id="@+id/next_process_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="next"
+        android:text="Next"
         android:background="@drawable/button3"
         android:textColor="@color/white"/>
 

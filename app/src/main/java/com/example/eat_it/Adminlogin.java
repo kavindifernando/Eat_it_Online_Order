@@ -79,7 +79,7 @@ public class Adminlogin extends AppCompatActivity {
                             Toast.makeText(Adminlogin.this,"Log-in Successfully",Toast.LENGTH_SHORT).show();
                             ladingBar.dismiss();
 
-                            Intent intent3 = new Intent(Adminlogin.this, AdmHomeActivity.class);
+                            Intent intent3 = new Intent(Adminlogin.this, Userprofile.class);
                             startActivity(intent3);
                         }
                     }

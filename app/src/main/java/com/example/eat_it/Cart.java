@@ -28,9 +28,9 @@ import com.squareup.picasso.Picasso;
 public class Cart extends AppCompatActivity {
     private RecyclerView recyclerView;
    private RecyclerView.LayoutManager layoutManager;
-    private Button confirmToCartAll;
+    private Button NextProcessButton;
     private TextView textTotalAmount;
-    private  int overTotalPrice=0;
+    private  int overTotalPrice = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,19 +41,19 @@ public class Cart extends AppCompatActivity {
         layoutManager =new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        confirmToCartAll =(Button) findViewById(R.id.confirm_to_cart_all);
-        textTotalAmount = (TextView) findViewById(R.id.Total_Price_k);
+        NextProcessButton =(Button) findViewById(R.id.next_process_button);
+        textTotalAmount = (TextView) findViewById(R.id.total_price);
 
-        confirmToCartAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               // textTotalAmount.setText("Total Price = "+ String.valueOf(overTotalPrice));
-                Intent intent = new Intent(Cart.this, ConfirmOrder.class);
-                intent.putExtra("Total Price",String.valueOf(overTotalPrice));
-                startActivity(intent);
-                finish();
-            }
-        });
+//        confirmToCartAll.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               //textTotalAmount.setText("Total Price = "+ String.valueOf(overTotalPrice));
+//                Intent intent = new Intent(Cart.this, ConfirmOrder.class);
+//                intent.putExtra("Total Price",String.valueOf(overTotalPrice));
+//                startActivity(intent);
+//                finish();
+//            }
+//      });
     }
     @Override
     protected void onStart() {
@@ -71,8 +71,10 @@ public class Cart extends AppCompatActivity {
                 holder.txtCartFoodPrice.setText(model.getPrice());
                 holder.txtCartFoodQuantity.setText(model.getQuantity());
                 //Picasso.get().load(Foods.getImage()).into(foodImageView);
-                int oneTypeModelTotalPrice = ((Integer.parseInt(model.getPrice()))) * Integer.parseInt(model.getQuantity());
-                overTotalPrice = overTotalPrice + oneTypeModelTotalPrice;
+               int oneTypeModelTotalPrice = ((Integer.parseInt(model.getPrice())) * Integer.parseInt(model.getQuantity()));
+              overTotalPrice = overTotalPrice + oneTypeModelTotalPrice;
+
+
                 holder.itemView.setOnClickListener(new View.OnClickListener(){
 
                     @Override

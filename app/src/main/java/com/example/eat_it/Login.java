@@ -95,7 +95,7 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this,"Log-in Successfully",Toast.LENGTH_SHORT).show();
                             ladingBar.dismiss();
 
-                            Intent intent3 = new Intent(Login.this, Userprofile.class);
+                            Intent intent3 = new Intent(Login.this, CustomerProfile.class);
                             Prevalent.currentOnlineCustomer=customerData;
                             startActivity(intent3);
 

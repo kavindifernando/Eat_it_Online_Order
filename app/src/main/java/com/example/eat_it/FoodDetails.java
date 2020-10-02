@@ -82,6 +82,7 @@ public class FoodDetails extends AppCompatActivity implements View.OnClickListen
         cartMap.put("date",saveCurrentDate);
         cartMap.put("time",saveCurrentTime);
         cartMap.put("quantity",numberButton1.getNumber());
+        //cartMap.put("image",productDetailsImage);
 
         cartListRef.child("Customer View").child(Prevalent.currentOnlineCustomer.getPhone())
                 //.child("Customer").child("phone")

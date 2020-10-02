@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardElevation="15dp">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/red"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/cart_food_image"
@@ -21,13 +25,14 @@
             android:layout_toEndOf="@id/cart_food_image"
             android:layout_toRightOf="@id/cart_food_image"
             android:text="Price"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/cart_food_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+android:textColor="@color/white"
             android:layout_toEndOf="@+id/cart_food_image"
             android:layout_below="@id/cart_food_name"
 
@@ -42,33 +47,33 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/cart_food_image"
             android:layout_below="@id/cart_food_price"
-
+android:textColor="@color/white"
             android:layout_toRightOf="@id/cart_food_image"
             android:text="TextView"
             android:textSize="20dp"/>
 
-        <Button
-            android:id="@+id/confirm_to_cart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/cart_food_image"
-            android:layout_below="@id/cart_food_quantity"
+<!--        <Button-->
+<!--            android:id="@+id/confirm_to_cart"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toEndOf="@+id/cart_food_image"-->
+<!--            android:layout_below="@id/cart_food_quantity"-->
 
-            android:layout_toRightOf="@id/cart_food_image"
-            android:text="Button"
-            android:textSize="20dp"/>
+<!--            android:layout_toRightOf="@id/cart_food_image"-->
+<!--            android:text="Button"-->
+<!--            android:textSize="20dp"/>-->
 
-        <Button
-            android:id="@+id/edit_food"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/confirm_to_cart"
-            android:layout_below="@id/cart_food_quantity"
+<!--        <Button-->
+<!--            android:id="@+id/edit_food"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toEndOf="@+id/confirm_to_cart"-->
+<!--            android:layout_below="@id/cart_food_quantity"-->
 
-            android:layout_toRightOf="@id/confirm_to_cart"
-            android:text="Button"
-            android:textSize="20dp"/>
+<!--            android:layout_toRightOf="@id/confirm_to_cart"-->
+<!--            android:text="Button"-->
+<!--            android:textSize="20dp"/>-->
 
 
     </RelativeLayout>
-</RelativeLayout>
+</androidx.cardview.widget.CardView>
