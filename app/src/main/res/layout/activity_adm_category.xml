@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/interface1"
+    tools:context=".AdmCategoryActivity">
+
+
+    <TextView
+        android:id="@+id/category_header2_txtView"
+        android:layout_width="314dp"
+        android:layout_height="62dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="-29dp"
+        android:text="Select Category"
+        android:textColor="#050505"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.628"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ad_back_btn" />
+
+    <Button
+        android:id="@+id/ad_back_btn"
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/category_header2_txtView"
+        android:layout_marginTop="1dp"
+        android:background="?attr/actionModeCloseDrawable" />
+
+    <TextView
+        android:id="@+id/category1_txtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ad_back_btn"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="3dp"
+        android:text="Pizza"
+        android:textColor="#020202"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/ad_pizza"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:layout_below="@id/category1_txtView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/adm_pizza" />
+
+    <TextView
+        android:id="@+id/category2_txtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ad_back_btn"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="1dp"
+        android:text="ShortEats"
+        android:textColor="#020202"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/ad_shortEats"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:layout_below="@id/category2_txtView"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="29dp"
+        android:src="@drawable/adm_sandwiches" />
+
+    <TextView
+        android:id="@+id/category3_txtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ad_shortEats"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="24dp"
+        android:text="Beverages"
+        android:textColor="#020202"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/ad_beverages"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:layout_below="@id/category3_txtView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/adm_drinks" />
+
+    <TextView
+        android:id="@+id/category4_txtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ad_shortEats"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="19dp"
+        android:text="Desserts"
+        android:textColor="#020202"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/ad_desserts"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:layout_below="@id/ad_shortEats"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="65dp"
+        android:src="@drawable/adm_burgers" />
+
+    <Button
+        android:id="@+id/adm_maintain_food_btn"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ad_beverages"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="41dp"
+        android:background="@drawable/adm_maintain_button"
+        android:padding="20dp"
+        android:text="Maintain Foods"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+
+</RelativeLayout>

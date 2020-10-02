@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="15dp"
+    app:cardBackgroundColor="#ACB4DD"
+    app:cardElevation="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/food_item_view_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/food_card_view"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/foodName_txtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Food Name"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/adm_hor_line"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_below="@id/foodName_txtView"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="2sp"
+            android:layout_marginRight="50dp"
+            android:background="?actionBarDivider"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/foodDescription_txtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/adm_hor_line"
+            android:layout_marginTop="25dp"
+            android:text="Food Description"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/adm_hor_line_2"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_below="@id/foodDescription_txtView"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="2sp"
+            android:layout_marginRight="50dp"
+            android:background="?actionBarDivider"
+            android:scaleType="centerCrop" />
+
+
+        <TextView
+            android:id="@+id/foodPrice_txtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/foodDescription_txtView"
+            android:layout_marginTop="25dp"
+            android:text="Food Price"
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:textSize="16dp" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
