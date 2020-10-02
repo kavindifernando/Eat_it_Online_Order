@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.service.autofill.TextValueSanitizer;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -34,207 +35,104 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import java.util.HashMap;
 import android.os.Bundle;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class CustomerProfile extends AppCompatActivity {
 
-    EditText name_TextView,email_TextView,phone_TextView,pwdTextView;
-    ImageView profileImage;
-    Button updateBtn,delBtn,changeProfileBtn;
+    private CircleImageView profileImageView;
+    private EditText fullNameEditText, phoneEditText, emailEditText , passwordEditText;
+    private TextView profileChangeTextBtn, saveTextButton , deleteTextBtn;
+    private Button feedbackButton, menuButton, logoutButton;
 
-    Customer cus;
-    Uri imgUri;
-    String myUrl = "";
+    private Uri imageUri;
+    private String myUrl = "";
     private StorageTask uploadTask;
-    StorageReference storeProfilePicture;
-    String checker = "";
+    private StorageReference storageProfilePrictureRef;
+    private String checker = "";
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_profile);
 
-        storeProfilePicture = FirebaseStorage.getInstance().getReference().child("Profile Picture");
+        storageProfilePrictureRef = FirebaseStorage.getInstance().getReference().child("Profile pictures");
 
-        name_TextView = (EditText) findViewById(R.id.name_Text);
-        email_TextView = (EditText) findViewById(R.id.email_Text);
-        phone_TextView = (EditText) findViewById(R.id.phone_Text);
-        pwdTextView = (EditText) findViewById(R.id.pwd_Text);
-        profileImage = (ImageView) findViewById(R.id.imageView2);
+        profileImageView = (CircleImageView) findViewById(R.id.settings_profile_image);
+        fullNameEditText = (EditText) findViewById(R.id.settings_full_name);
+        phoneEditText = (EditText) findViewById(R.id.settings_phone_number);
+        emailEditText = (EditText) findViewById(R.id.settings_emailAddress);
+        passwordEditText = (EditText) findViewById(R.id.settings_password);
 
-        updateBtn = (Button) findViewById(R.id.updateBtn);
-        delBtn = (Button) findViewById(R.id.delBtn);
-        changeProfileBtn = (Button) findViewById(R.id.changeProfileBtn);
+        profileChangeTextBtn = (TextView) findViewById(R.id.profile_image_change_btn);
+        saveTextButton = (TextView) findViewById(R.id.update_account_settings_btn);
+        deleteTextBtn = (TextView) findViewById(R.id.delete_account_settings_btn);
 
-        customerInfoDisplay(name_TextView,email_TextView,phone_TextView,profileImage);
+        feedbackButton = (Button) findViewById(R.id.feedbackBtn);
+        menuButton = (Button) findViewById(R.id.menuBtn);
+        logoutButton = (Button) findViewById(R.id.logoutBtn);
 
-        updateBtn.setOnClickListener(new View.OnClickListener() {
+        userInfoDisplay(profileImageView, fullNameEditText, phoneEditText, emailEditText, passwordEditText);
+
+        saveTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if(checker.equals("clicked")){
-                    CustomerUpdateProfile();
+            public void onClick(View view)
+            {
+                if (checker.equals("clicked"))
+                {
+                    userInfoSaved();
                 }
-                else{
-                    customerUpdateProfileData();
+                else
+                {
+                    updateOnlyUserInfo();
                 }
             }
         });
 
-        changeProfileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
+        profileChangeTextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
                 checker = "clicked";
 
-                CropImage.activity(imgUri)
-                        .setAspectRatio(1,1)
+                CropImage.activity(imageUri)
+                        .setAspectRatio(1, 1)
                         .start(CustomerProfile.this);
             }
         });
 
-        delBtn.setOnClickListener(new View.OnClickListener() {
+        deleteTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 deleteCustomer();
             }
         });
 
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data == null){
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            imgUri = result.getUri();
-
-            profileImage.setImageURI(imgUri);
-        }
-        else{
-            Toast.makeText(this,"Error,Please Try Again",Toast.LENGTH_SHORT).show();
-
-            startActivity(new Intent(CustomerProfile.this,CustomerProfile.class));
-            finish();
-        }
-
-    }
-
-    private void customerInfoDisplay(TextView name_textView, TextView email_textView, TextView phone_textView, final ImageView profileImage) {
-
-        DatabaseReference dbRef1 = FirebaseDatabase.getInstance().getReference().child("Customer").child(Prevalent.currentOnlineCustomer.getEmail());
-
-        dbRef1.addValueEventListener(new ValueEventListener() {
+        feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    if(snapshot.child("image").exists()){
-                        String image = snapshot.child("image").getValue().toString();
-                        String name = snapshot.child("name").getValue().toString();
-                        String email = snapshot.child("email").getValue().toString();
-                        String phone = snapshot.child("phone").getValue().toString();
-                        String password = snapshot.child("password").getValue().toString();
-
-                        Picasso.get().load(image).into(profileImage);
-                        name_TextView.setText(name);
-                        email_TextView.setText(email);
-                        phone_TextView.setText(phone);
-                        pwdTextView.setText(password);
-
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onClick(View view) {
+                Intent intent = new Intent(CustomerProfile.this,CustomerFeedback.class);
+                startActivity(intent);
             }
         });
 
-    }
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CustomerProfile.this,Menu.class);
+                startActivity(intent);
+            }
+        });
 
-    private void CustomerUpdateProfile() {
-
-        if(TextUtils.isEmpty(name_TextView.getText().toString())){
-            Toast.makeText(this,"Name is mandatory",Toast.LENGTH_SHORT).show();
-        }
-        else if(TextUtils.isEmpty(phone_TextView.getText().toString())){
-            Toast.makeText(this,"Name is mandatory",Toast.LENGTH_SHORT).show();
-        }
-        else if(TextUtils.isEmpty(email_TextView.getText().toString())){
-            Toast.makeText(this,"Name is mandatory",Toast.LENGTH_SHORT).show();
-        }
-        else if(checker.equals("clicked")){
-            uploadImage();
-        }
-
-    }
-
-    private void uploadImage() {
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Update Profile");
-        progressDialog.setMessage("Please wait,while we are updating your profile");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.show();
-
-        if(imgUri != null){
-            final StorageReference fileRef = storeProfilePicture.child(Prevalent.currentOnlineCustomer.getEmail() + ".jpg");
-            uploadTask = fileRef.putFile(imgUri);
-            uploadTask.continueWithTask(new Continuation() {
-                @Override
-                public Object then(@NonNull Task task) throws Exception {
-
-                    if(!task.isSuccessful()){
-                        throw task.getException();
-                    }
-                    return fileRef.getDownloadUrl();
-                }
-            })
-                    .addOnCompleteListener(new OnCompleteListener<Uri>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Uri> task) {
-                            if(task.isSuccessful()){
-                                Uri downloadUrl = task.getResult();
-                                myUrl = downloadUrl.toString();
-
-                                DatabaseReference dbref2 = FirebaseDatabase.getInstance().getReference().child("Customer");
-
-                                HashMap<String,Object> customermap = new HashMap<>();
-                                customermap.put("name" , name_TextView.getText().toString());
-                                customermap.put("phone" , phone_TextView.getText().toString());
-                                customermap.put("email" , email_TextView.getText().toString());
-                                customermap.put("image" , myUrl);
-
-                                dbref2.child(Prevalent.currentOnlineCustomer.getPhone()).updateChildren(customermap);
-
-                                progressDialog.dismiss();
-                                startActivity(new Intent(CustomerProfile.this,CustomerProfile.class));
-                                Toast.makeText(CustomerProfile.this,"Your Profile Updated Successfully",Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
-                            else{
-                                progressDialog.dismiss();
-                                Toast.makeText(CustomerProfile.this,"Error",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-        }
-        else{
-            Toast.makeText(CustomerProfile.this,"Please Select an image",Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void customerUpdateProfileData() {
-        DatabaseReference dbref2 = FirebaseDatabase.getInstance().getReference().child("Customer");
-
-        HashMap<String,Object> customermap = new HashMap<>();
-        customermap.put("name" , name_TextView.getText().toString());
-        customermap.put("phone" , phone_TextView.getText().toString());
-        customermap.put("email" , email_TextView.getText().toString());
-
-        dbref2.child(Prevalent.currentOnlineCustomer.getPhone()).updateChildren(customermap);
-
-        startActivity(new Intent(CustomerProfile.this,CustomerProfile.class));
-        Toast.makeText(CustomerProfile.this,"Your Profile Updated Successfully",Toast.LENGTH_SHORT).show();
-        finish();
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CustomerProfile.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void deleteCustomer() {
@@ -246,7 +144,10 @@ public class CustomerProfile extends AppCompatActivity {
                 if(snapshot.exists()){
                     delRef.removeValue();
                     claerData();
+
                     Toast.makeText(getApplicationContext(),"Customer Deleted Successfully",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CustomerProfile.this,MainActivity.class);
+                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"No Source To Delete",Toast.LENGTH_SHORT).show();
@@ -258,13 +159,176 @@ public class CustomerProfile extends AppCompatActivity {
 
             }
         });
+
     }
 
-    void claerData(){
-        name_TextView.setText("");
-        email_TextView.setText("");
-        phone_TextView.setText("");
-        pwdTextView.setText("");
+    private void claerData() {
+        fullNameEditText.setText("");
+        emailEditText.setText("");
+        phoneEditText.setText("");
+        passwordEditText.setText("");
     }
 
+
+    private void updateOnlyUserInfo()
+    {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Customer");
+
+        HashMap<String, Object> customerData = new HashMap<>();
+        customerData. put("name", fullNameEditText.getText().toString());
+        customerData. put("phone", phoneEditText.getText().toString());
+        customerData. put("email", emailEditText.getText().toString());
+        customerData.put("Password",passwordEditText.getText().toString());
+        ref.child(Prevalent.currentOnlineCustomer.getPhone()).updateChildren(customerData);
+
+        startActivity(new Intent(CustomerProfile.this, MainActivity.class));
+        Toast.makeText(CustomerProfile.this, "Profile Info update successfully.", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE  &&  resultCode==RESULT_OK  &&  data!=null)
+        {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            imageUri = result.getUri();
+
+            profileImageView.setImageURI(imageUri);
+        }
+        else
+        {
+            Toast.makeText(this, "Error, Try Again.", Toast.LENGTH_SHORT).show();
+
+            startActivity(new Intent(CustomerProfile.this, CustomerProfile.class));
+            finish();
+        }
+    }
+
+    private void userInfoSaved()
+    {
+        if (TextUtils.isEmpty(fullNameEditText.getText().toString()))
+        {
+            Toast.makeText(this, "Name is mandatory.", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(emailEditText.getText().toString()))
+        {
+            Toast.makeText(this, "Name is address.", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(phoneEditText.getText().toString()))
+        {
+            Toast.makeText(this, "Name is mandatory.", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(passwordEditText.getText().toString()))
+        {
+            Toast.makeText(this, "Name is mandatory.", Toast.LENGTH_SHORT).show();
+        }
+        else if(checker.equals("clicked"))
+        {
+            uploadImage();
+        }
+    }
+
+    private void uploadImage()
+    {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Update Profile");
+        progressDialog.setMessage("Please wait, while we are updating your account information");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+
+        if (imageUri != null)
+        {
+            final StorageReference fileRef = storageProfilePrictureRef
+                    .child(Prevalent.currentOnlineCustomer.getPhone() + ".jpg");
+
+            uploadTask = fileRef.putFile(imageUri);
+
+            uploadTask.continueWithTask(new Continuation() {
+                @Override
+                public Object then(@NonNull Task task) throws Exception
+                {
+                    if (!task.isSuccessful())
+                    {
+                        throw task.getException();
+                    }
+
+                    return fileRef.getDownloadUrl();
+                }
+            })
+                    .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task)
+                        {
+                            if (task.isSuccessful())
+                            {
+                                Uri downloadUrl = task.getResult();
+                                myUrl = downloadUrl.toString();
+
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Customer");
+
+                                HashMap<String, Object> customerData = new HashMap<>();
+                                customerData. put("name", fullNameEditText.getText().toString());
+                                customerData. put("email", emailEditText.getText().toString());
+                                customerData. put("phone", phoneEditText.getText().toString());
+                                customerData.put("password",passwordEditText.getText().toString());
+                                customerData. put("image", myUrl);
+                                ref.child(Prevalent.currentOnlineCustomer.getPhone()).updateChildren(customerData);
+
+                                progressDialog.dismiss();
+
+                                startActivity(new Intent(CustomerProfile.this,CustomerProfile.class));
+                                Toast.makeText(CustomerProfile.this, "Profile Info update successfully.", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                            else
+                            {
+                                progressDialog.dismiss();
+                                Toast.makeText(CustomerProfile.this, "Error.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+        else
+        {
+            Toast.makeText(this, "image is not selected.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void userInfoDisplay(final CircleImageView profileImageView, final EditText fullNameEditText, final EditText phoneEditText, final EditText emailEditText , final EditText passwordEditText)
+    {
+        DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Customer").child(Prevalent.currentOnlineCustomer.getPhone());
+
+        UsersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.exists())
+                {
+                    if (dataSnapshot.child("image").exists())
+                    {
+                        String image = dataSnapshot.child("image").getValue().toString();
+                        String name = dataSnapshot.child("name").getValue().toString();
+                        String phone = dataSnapshot.child("phone").getValue().toString();
+                        String email = dataSnapshot.child("email").getValue().toString();
+                        String password = dataSnapshot.child("password").getValue().toString();
+
+                        Picasso.get().load(image).into(profileImageView);
+                        fullNameEditText.setText(name);
+                        phoneEditText.setText(phone);
+                        emailEditText.setText(email);
+                        passwordEditText.setText(password);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
