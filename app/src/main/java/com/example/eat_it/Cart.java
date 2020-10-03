@@ -25,12 +25,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class Cart extends AppCompatActivity {
+import io.paperdb.Paper;
+
+public class Cart extends AppCompatActivity implements View.OnClickListener{
     private RecyclerView recyclerView;
    private RecyclerView.LayoutManager layoutManager;
-    private Button NextProcessButton;
+    private Button NextProcessButton,ViewTotalPriceOfCart;
     private TextView textTotalAmount;
-    private  int overTotalPrice = 0;
+    private double overTotalPrice = 0.00;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,17 +45,20 @@ public class Cart extends AppCompatActivity {
 
         NextProcessButton =(Button) findViewById(R.id.next_process_button);
         textTotalAmount = (TextView) findViewById(R.id.total_price);
+        ViewTotalPriceOfCart=(Button)findViewById(R.id.view_total_price_of_cart);
+NextProcessButton.setOnClickListener(this);
+ViewTotalPriceOfCart.setOnClickListener(this);
 
-//        confirmToCartAll.setOnClickListener(new View.OnClickListener() {
+//       NextProcessButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//               //textTotalAmount.setText("Total Price = "+ String.valueOf(overTotalPrice));
+//              textTotalAmount.setText("Total Price = "+ String.valueOf(overTotalPrice));
 //                Intent intent = new Intent(Cart.this, ConfirmOrder.class);
-//                intent.putExtra("Total Price",String.valueOf(overTotalPrice));
+//               intent.putExtra("Total Price",String.valueOf(overTotalPrice));
 //                startActivity(intent);
 //                finish();
 //            }
-//      });
+//     });
     }
     @Override
     protected void onStart() {
@@ -71,8 +76,14 @@ public class Cart extends AppCompatActivity {
                 holder.txtCartFoodPrice.setText(model.getPrice());
                 holder.txtCartFoodQuantity.setText(model.getQuantity());
                 //Picasso.get().load(Foods.getImage()).into(foodImageView);
-               int oneTypeModelTotalPrice = ((Integer.parseInt(model.getPrice())) * Integer.parseInt(model.getQuantity()));
-              overTotalPrice = overTotalPrice + oneTypeModelTotalPrice;
+                try{
+                    Float oneTypeModelTotalPrice =((Float.valueOf(model.getPrice()))) * Float.valueOf(model.getQuantity());
+                    overTotalPrice = overTotalPrice + oneTypeModelTotalPrice;
+
+                }catch (NumberFormatException e){
+Toast.makeText(Cart.this,"total price can not show",Toast.LENGTH_SHORT).show();
+                }
+
 
 
                 holder.itemView.setOnClickListener(new View.OnClickListener(){
@@ -131,5 +142,23 @@ public class Cart extends AppCompatActivity {
         };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.next_process_button:
+                Intent intent = new Intent(Cart.this, Final_Order.class);
+                intent.putExtra("Total Price",String.valueOf(overTotalPrice));
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.view_total_price_of_cart:
+                textTotalAmount.setText("Total Price = "+ String.valueOf(overTotalPrice));
+
+                break;
+
+            default:
+        }
     }
 }

@@ -4,12 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu">
+    tools:context=".Menu"
+    android:background="@drawable/interface1">
+    <RelativeLayout
+        android:id="@+id/layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="150dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        >
+
+        <SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="10dp"
+
+
+            android:background="@drawable/button3"
+            android:text="@string/order_now"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/go_to_cart2"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+
+
+            android:layout_marginStart="300dp"
+            android:layout_marginLeft="54dp"
+
+
+
+            android:layout_toEndOf="@+id/search_bar"
+            android:layout_toRightOf="@id/search_bar"
+            android:background="@drawable/button3"
+            android:text="Go To Cart"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:id="@+id/recycle_menu"></androidx.recyclerview.widget.RecyclerView>
+        android:id="@+id/recycle_menu"
+        android:layout_below="@+id/layout_1"></androidx.recyclerview.widget.RecyclerView>
 
 
 </RelativeLayout>

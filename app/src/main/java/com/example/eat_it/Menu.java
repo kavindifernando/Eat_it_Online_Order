@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.eat_it.Model.Foods;
 import com.example.eat_it.ViewHolder.ProductViewHolder;
@@ -21,9 +22,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class Menu extends AppCompatActivity {
+import io.paperdb.Paper;
+
+public class Menu extends AppCompatActivity implements View.OnClickListener{
     private DatabaseReference FoodsRef;
     private RecyclerView recyclerView;
+    private Button goToCartFromMenu;
     RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -35,6 +39,8 @@ public class Menu extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        goToCartFromMenu=findViewById(R.id.go_to_cart2);
+        goToCartFromMenu.setOnClickListener(this);
 
     }
     @Override
@@ -77,5 +83,19 @@ public class Menu extends AppCompatActivity {
                 };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.go_to_cart2:
+                Paper.book().destroy();
+                Intent intent = new Intent(Menu.this, Cart.class);
+                startActivity(intent);
+                break;
+
+
+            default:
+        }
     }
 }

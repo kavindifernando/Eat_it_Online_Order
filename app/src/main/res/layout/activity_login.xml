@@ -67,7 +67,7 @@
             android:id="@+id/forget_password_link"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-
+android:inputType="textPassword"
             android:layout_marginLeft="70dp"
             android:text="Forget Password?"
             android:textColor="@color/red"

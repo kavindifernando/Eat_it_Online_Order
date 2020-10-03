@@ -33,13 +33,70 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/layout_2"
         android:layout_above="@id/next_process_button"></androidx.recyclerview.widget.RecyclerView>
+<!--    <Button-->
+<!--        android:id="@+id/view_total_price_of_cart"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:text="view_total_price"-->
+<!--        -->
+<!--        android:background="@drawable/button3"-->
+<!--        android:textColor="@color/white"/>-->
+<!--    <Button-->
+<!--        android:id="@+id/next_process_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:text="Next"-->
+<!--        android:layout_toRightOf="@id/view_total_price_of_cart"-->
+<!--        android:background="@drawable/button3"-->
+<!--        android:layout_below="@id/view_total_price_of_cart"-->
+<!--        android:textColor="@color/white"/>-->
+
+    <Button
+        android:id="@+id/view_total_price_of_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/number_btn"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="68dp"
+
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/button3"
+        android:text="Total "
+        android:textColor="@color/white" />
+
+<!--    <Button-->
+<!--        android:id="@+id/next_process_button"-->
+
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/number_btn"-->
+<!--       -->
+
+<!--        -->
+<!--        android:layout_toRightOf="@id/view_total_price_of_cart"-->
+
+
+<!--        android:background="@drawable/button3"-->
+<!--        android:text="Go To Cart"-->
+<!--        android:textColor="@color/white" />-->
     <Button
         android:id="@+id/next_process_button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:text="Next"
-        android:background="@drawable/button3"
-        android:textColor="@color/white"/>
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/button2"
+        android:text="@string/order_now"
+        android:textColor="@color/white"></Button>
 
 </RelativeLayout>

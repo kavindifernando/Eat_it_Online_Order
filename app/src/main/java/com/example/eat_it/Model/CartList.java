@@ -6,16 +6,25 @@ public class CartList {
     private String  price;
 
     private String  quantity;
-
+private String imageCart;
     public CartList(){
 
     }
 
-    public CartList(String fid, String fname, String price, String quantity) {
+    public CartList(String fid, String fname, String price, String quantity,String imageCart) {
         this.fid = fid;
         this.fname = fname;
         this.price = price;
         this.quantity = quantity;
+        this.imageCart= imageCart;
+    }
+
+    public String getImageCart() {
+        return imageCart;
+    }
+
+    public void setImageCart(String imageCart) {
+        this.imageCart = imageCart;
     }
 
     public String getFid() {
