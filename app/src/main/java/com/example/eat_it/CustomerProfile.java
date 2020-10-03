@@ -181,7 +181,7 @@ public class CustomerProfile extends AppCompatActivity {
         customerData.put("Password",passwordEditText.getText().toString());
         ref.child(Prevalent.currentOnlineCustomer.getPhone()).updateChildren(customerData);
 
-        startActivity(new Intent(CustomerProfile.this, MainActivity.class));
+        startActivity(new Intent(CustomerProfile.this, CustomerProfile.class));
         Toast.makeText(CustomerProfile.this, "Profile Info update successfully.", Toast.LENGTH_SHORT).show();
         finish();
     }
