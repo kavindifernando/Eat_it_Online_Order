@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,11 +22,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
+
     private EditText txtName,txtEmail,txtPhone,txtPassword;
     private Button btnRegister;
-
 
     private ProgressDialog lodingbar;
 
@@ -40,16 +42,11 @@ public class Register extends AppCompatActivity {
         lodingbar =new ProgressDialog(this);
 
         btnRegister = (Button) findViewById(R.id.regiserBtn);
-        //cus = new Customer();
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //dbref = FirebaseDatabase.getInstance().getReference().child("Customer");
-
                 createAccount();
-
-
             }
         });
 
@@ -60,8 +57,8 @@ public class Register extends AppCompatActivity {
         String phone=txtPhone.getText().toString();
         String password=txtPassword.getText().toString();
 
-        if(TextUtils.isEmpty(name)){
-            Toast.makeText(getApplicationContext(),"Please Enter the Full Name",Toast.LENGTH_SHORT).show();
+        if(TextUtils.isEmpty(name)) {
+            Toast.makeText(getApplicationContext(), "Please Enter the Full Name", Toast.LENGTH_SHORT).show();
         }
         else if(TextUtils.isEmpty(email)){
             Toast.makeText(getApplicationContext(),"Please Enter the Email Address",Toast.LENGTH_SHORT).show();
@@ -84,6 +81,7 @@ public class Register extends AppCompatActivity {
     }
 
     private  void ValidateEmailAddress(final String name, final String email, final String phone, final String password){
+
         final DatabaseReference dbref;
         dbref= FirebaseDatabase.getInstance().getReference();
 
@@ -108,7 +106,7 @@ public class Register extends AppCompatActivity {
                                         Toast.makeText(Register.this,"Account created Successfully",Toast.LENGTH_SHORT).show();
                                         lodingbar.dismiss();
 
-                                        Intent intent3 = new Intent(Register.this, Menu.class);
+                                        Intent intent3 = new Intent(Register.this, MainActivity.class);
                                         startActivity(intent3);
                                     }
                                     else{

@@ -75,7 +75,7 @@ public class CustomerFeedback extends AppCompatActivity {
                         feedback.setMessage(messageText.getText().toString().trim());
 
                         //dbRef.push().setValue(feedback);
-                        dbRef.child("feedback").setValue(feedback);
+                        dbRef.child("feedback1").setValue(feedback);
                         clearData();
 
                         Toast.makeText(getApplicationContext(),"Your Feedback Saved Successfully...",Toast.LENGTH_SHORT).show();
@@ -90,7 +90,7 @@ public class CustomerFeedback extends AppCompatActivity {
         showButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference showRef = FirebaseDatabase.getInstance().getReference().child("Feedback").child("feedback");
+                DatabaseReference showRef = FirebaseDatabase.getInstance().getReference().child("Feedback").child("feedback1");
                 showRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -121,14 +121,14 @@ public class CustomerFeedback extends AppCompatActivity {
                 updRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.hasChild("feedback")){
+                        if(snapshot.hasChild("feedback1")){
                             try {
                                 feedback.setName(nameText.getText().toString().trim());
                                 feedback.setEmail(emailText.getText().toString().trim());
                                 feedback.setSubject(subjectText.getText().toString().trim());
                                 feedback.setMessage(messageText.getText().toString().trim());
 
-                                dbRef = FirebaseDatabase.getInstance().getReference().child("Feedback").child("feedback");
+                                dbRef = FirebaseDatabase.getInstance().getReference().child("Feedback").child("feedback1");
                                 dbRef.setValue(feedback);
 
                                 Toast.makeText(getApplicationContext(),"Your Feedback Updated Successfully...",Toast.LENGTH_SHORT).show();
@@ -157,8 +157,8 @@ public class CustomerFeedback extends AppCompatActivity {
                delRef.addListenerForSingleValueEvent(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                       if(snapshot.hasChild("feedback")){
-                           dbRef = FirebaseDatabase.getInstance().getReference().child("Feedback").child("feedback");
+                       if(snapshot.hasChild("feedback1")){
+                           dbRef = FirebaseDatabase.getInstance().getReference().child("Feedback").child("feedback1");
                            delRef.removeValue();
                            clearData();
 
