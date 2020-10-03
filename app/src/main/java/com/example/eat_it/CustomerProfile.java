@@ -113,7 +113,7 @@ public class CustomerProfile extends AppCompatActivity {
         feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CustomerProfile.this,Menu.class);
+                Intent intent = new Intent(CustomerProfile.this,CustomerFeedback.class);
                 startActivity(intent);
             }
         });
