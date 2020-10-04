@@ -94,7 +94,7 @@ public class dr_login extends AppCompatActivity {
                             CurrentDriver.setPhoneNumb(phone);
 
 
-                            Intent intent3 = new Intent(dr_login.this, dr_login.class);
+                            Intent intent3 = new Intent(dr_login.this, dr_dashboard.class);
 
 
                             startActivity(intent3);

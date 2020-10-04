@@ -114,7 +114,7 @@ public class dr_signupui extends AppCompatActivity {
                                  Toast.makeText(dr_signupui.this, "Your account has been created", Toast.LENGTH_SHORT).show();
                                  loadingBar.dismiss();        // Terminate the loading bar
 
-                                 Intent intent = new Intent(dr_signupui.this, dr_signupui.class);
+                                 Intent intent = new Intent(dr_signupui.this, dr_login.class);
                                  startActivity(intent);
                              }
 
