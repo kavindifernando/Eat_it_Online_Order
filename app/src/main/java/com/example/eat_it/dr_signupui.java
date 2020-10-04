@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,8 +23,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-public class dr_signupui extends AppCompatActivity {
+import io.paperdb.Paper;
 
+public class dr_signupui extends AppCompatActivity implements  View.OnClickListener {
+private TextView textView7;
     private Button SignupBtn;
     private EditText name,phone,email,password;
     private ProgressDialog loadingBar;  /* Dialog Box */
@@ -32,7 +35,7 @@ public class dr_signupui extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dr_signupui);
-
+        textView7 = (TextView) findViewById(R.id.textView7);
         SignupBtn = (Button) findViewById(R.id.signUpBtn);
         name = (EditText) findViewById(R.id.dr_name);
         phone = (EditText) findViewById(R.id.dr_phone);
@@ -40,13 +43,8 @@ public class dr_signupui extends AppCompatActivity {
         password = (EditText) findViewById(R.id.dr_password);
         loadingBar = new ProgressDialog(this);
 
-        SignupBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                CreateAccount();
-            }
-        });
+        SignupBtn.setOnClickListener(this);
+        textView7.setOnClickListener(this);
     }
 
     private void CreateAccount()
@@ -143,4 +141,19 @@ public class dr_signupui extends AppCompatActivity {
             });
 
         }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.signUpBtn:
+                CreateAccount();
+                break;
+            case R.id.textView7:
+                Intent intent2 = new Intent(dr_signupui.this, dr_login.class);
+                startActivity(intent2);
+                break;
+
+            default:
+        }
+    }
 }
