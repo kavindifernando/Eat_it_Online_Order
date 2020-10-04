@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    app:cardElevation="15dp"
+    app:cardBackgroundColor="#ACB4DD">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/food_item_view_image"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/customers_card_view" />
+
+        <TextView
+            android:id="@+id/CustomerName_txtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Customer Name"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            />
+
+        <ImageView
+            android:id="@+id/adm_hor_line"
+            android:layout_below="@id/CustomerName_txtView"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_height="8dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="2sp"
+            android:background="?actionBarDivider"/>
+
+        <TextView
+            android:id="@+id/CustomerEmail_txtView"
+            android:layout_below="@id/adm_hor_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Customer Email"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            android:textColor="#000000"
+            android:textSize="18dp"/>
+
+        <ImageView
+            android:id="@+id/adm_hor_line_2"
+            android:layout_below="@id/CustomerEmail_txtView"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_height="8dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="2sp"
+            android:background="?actionBarDivider"/>
+
+        <TextView
+            android:id="@+id/CustomerPhone_txtView"
+            android:layout_below="@id/adm_hor_line_2"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Customer Phone"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            />
+
+        <TextView
+            android:id="@+id/CustomerActive_txtView"
+            android:layout_below="@id/CustomerPhone_txtView"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#94D3AE"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="Active customer"
+            android:textAlignment="textEnd"
+            android:textStyle="italic"
+            android:textColor="#C14E4E"
+            android:textSize="18dp"
+            />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
