@@ -77,7 +77,7 @@
         android:id="@+id/confirm_button_payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button2"
+        android:background="@drawable/button3"
         android:text="@string/btn_con"
         android:layout_below="@id/creditCardExpDate"
         android:textColor="@color/white"

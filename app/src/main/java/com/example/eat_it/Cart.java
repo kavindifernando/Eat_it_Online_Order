@@ -23,9 +23,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
-
-import io.paperdb.Paper;
 
 public class Cart extends AppCompatActivity implements View.OnClickListener{
     private RecyclerView recyclerView;
@@ -48,6 +45,7 @@ public class Cart extends AppCompatActivity implements View.OnClickListener{
         ViewTotalPriceOfCart=(Button)findViewById(R.id.view_total_price_of_cart);
 NextProcessButton.setOnClickListener(this);
 ViewTotalPriceOfCart.setOnClickListener(this);
+      // price= Float.valueOf(model.getPrice());
 
 //       NextProcessButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -77,12 +75,14 @@ ViewTotalPriceOfCart.setOnClickListener(this);
                 holder.txtCartFoodQuantity.setText(model.getQuantity());
                 //Picasso.get().load(Foods.getImage()).into(foodImageView);
                 try{
-                    Float oneTypeModelTotalPrice =((Float.valueOf(model.getPrice()))) * Float.valueOf(model.getQuantity());
+                    double oneTypeModelTotalPrice= CalculateTotalPriceOfCart(((Float.valueOf(model.getPrice()))) , Float.valueOf(model.getQuantity()));
+                    //Float oneTypeModelTotalPrice =((Float.valueOf(model.getPrice()))) * Float.valueOf(model.getQuantity());
                     overTotalPrice = overTotalPrice + oneTypeModelTotalPrice;
 
                 }catch (NumberFormatException e){
 Toast.makeText(Cart.this,"total price can not show",Toast.LENGTH_SHORT).show();
                 }
+
 
 
 
@@ -160,5 +160,11 @@ Toast.makeText(Cart.this,"total price can not show",Toast.LENGTH_SHORT).show();
 
             default:
         }
+    }
+
+    public double CalculateTotalPriceOfCart(float x,float y){
+        float a= x *  y;
+
+        return a;
     }
 }

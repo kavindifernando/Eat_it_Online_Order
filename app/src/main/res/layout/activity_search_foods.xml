@@ -4,49 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu"
-    android:background="@drawable/interface1">
+    android:background="@drawable/interface1"
+    tools:context=".SearchFoods">
+
     <RelativeLayout
-        android:id="@+id/layout_1"
+        android:id="@+id/layout6"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-android:layout_marginStart="5dp"
-        android:layout_marginTop="150dp"
-        android:layout_centerHorizontal="true"
-        android:background="@color/white"
-        >
 
-        <Button
-            android:id="@+id/search_bar"
+android:layout_marginTop="150dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white">
+
+        <EditText
+            android:id="@+id/productName"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-
-
-            android:background="@drawable/button3"
-            android:text="Search Here"
-            android:textColor="@color/white" />
+            android:hint="Search"/>
 
         <Button
-            android:id="@+id/go_to_cart2"
-
+            android:id="@+id/Search_for_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="28dp"
             android:layout_marginEnd="5dp"
-            android:layout_toEndOf="@+id/search_bar"
-            android:layout_toRightOf="@+id/search_bar"
-            android:background="@drawable/button3"
-            android:text="Go To Cart"
-            android:textColor="@color/white" />
-
+            android:layout_toEndOf="@+id/productName"
+            android:layout_toRightOf="@+id/product_name"
+            android:text="Button"
+            android:background="@drawable/button3"/>
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:id="@+id/recycle_menu"
-        android:layout_below="@+id/layout_1"></androidx.recyclerview.widget.RecyclerView>
-
-
+        android:id="@+id/searchList"
+        android:layout_below="@+id/layout6"></androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

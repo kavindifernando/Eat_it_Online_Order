@@ -12,12 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreditCardDetails"></activity>
+        <activity android:name=".SearchFoods"></activity>
+        <activity android:name=".CreditCardDetails" />
+        <activity android:name=".AdmAddNewFoodActivity" />
+        <activity android:name=".AdmFoodDetailsActivity" />
+        <activity android:name=".CustomerFeedback" />
+        <activity android:name=".dr_login" />
         <activity android:name=".Final_Order" />
         <activity android:name=".CustomerProfile" />
         <activity android:name=".ConfirmOrder" />
         <activity android:name=".Cart" />
-        <activity android:name=".AdmHomeActivity" /> <!-- <activity android:name=".AdmCategoryActivity" /> -->
+        <activity android:name=".AdmHomeActivity" />
+        <activity android:name=".AdmCategoryActivity" />
         <activity android:name=".dr_signupui" />
         <activity android:name=".Userprofile" />
         <activity android:name=".FoodDetails" />

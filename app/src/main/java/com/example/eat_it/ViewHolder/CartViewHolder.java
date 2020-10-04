@@ -17,7 +17,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     public CartViewHolder(@NonNull View itemView) {
         super(itemView);
-        foodImageView=(ImageView) itemView.findViewById(R.id.cart_food_image);
+        //foodImageView=(ImageView) itemView.findViewById(R.id.cart_food_image);
         txtCartFoodName=(TextView) itemView.findViewById(R.id.cart_food_name);
         txtCartFoodPrice=(TextView) itemView.findViewById(R.id.cart_food_price);
         txtCartFoodQuantity=(TextView) itemView.findViewById(R.id.cart_food_quantity);

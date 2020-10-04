@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import com.example.eat_it.Model.Foods;
 import com.example.eat_it.ViewHolder.ProductViewHolder;
@@ -22,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 import io.paperdb.Paper;
 
 public class Menu extends AppCompatActivity implements View.OnClickListener{
@@ -29,6 +33,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
     private RecyclerView recyclerView;
     private Button goToCartFromMenu;
     RecyclerView.LayoutManager layoutManager;
+    private Button  mySearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +45,11 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         layoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         goToCartFromMenu=findViewById(R.id.go_to_cart2);
+        mySearchView=(Button)findViewById(R.id.search_bar);
         goToCartFromMenu.setOnClickListener(this);
+        mySearchView.setOnClickListener(this);
+
+
 
     }
     @Override
@@ -89,11 +98,15 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.go_to_cart2:
-                Paper.book().destroy();
+                //Paper.book().destroy();
                 Intent intent = new Intent(Menu.this, Cart.class);
                 startActivity(intent);
                 break;
-
+            case R.id.search_bar:
+                //Paper.book().destroy();
+                Intent intent3 = new Intent(Menu.this, SearchFoods.class);
+                startActivity(intent3);
+                break;
 
             default:
         }
