@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AdmListView.AdmCustomerListViewActivity"></activity>
+        <activity android:name=".dr_update_profile_form"></activity>
         <activity android:name=".SearchFoods"></activity>
         <activity android:name=".CreditCardDetails" />
         <activity android:name=".AdmAddNewFoodActivity" />

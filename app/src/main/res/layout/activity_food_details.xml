@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FoodDetails">
+    tools:context=".FoodDetails"
+    >
     <!--    <AppBarLayout-->
     <!--        android:id="@+id/app_bar_layout"-->
     <!--        android:layout_height="wrap_content"-->
@@ -137,8 +138,8 @@
         android:layout_marginEnd="99dp"
         android:layout_marginBottom="86dp"
         android:text="@string/order_now"
-        android:background="@drawable/button3"
-        android:textColor="@color/white"
+        android:background="@drawable/button1"
+        android:textColor="@color/black"
 
         android:layout_below="@+id/number_btn"
         />
@@ -146,8 +147,8 @@
         android:id="@+id/go_to_cart"
 
         android:text="Go To Cart"
-        android:background="@drawable/button3"
-        android:textColor="@color/white"
+        android:background="@drawable/button2"
+        android:textColor="@color/black"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/number_btn"
 

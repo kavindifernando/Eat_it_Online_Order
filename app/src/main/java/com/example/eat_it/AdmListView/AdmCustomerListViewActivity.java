@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.eat_it.AdmDatabaseHelper.AdminCustomerDatabaseHelper;
-import com.example.eat_it.AdmDatabaseHelper.AdminDriverDatabaseHelper;
+//import com.example.eat_it.AdmDatabaseHelper.AdminDriverDatabaseHelper;
 import com.example.eat_it.AdmRecyclerView.Customer_RecyclerView_Config;
-import com.example.eat_it.AdmRecyclerView.Driver_RecyclerView_Config;
+//import com.example.eat_it.AdmRecyclerView.Driver_RecyclerView_Config;
 import com.example.eat_it.R;
 import com.example.eat_it.Model.Customer;
 import com.example.eat_it.Model.Driver;

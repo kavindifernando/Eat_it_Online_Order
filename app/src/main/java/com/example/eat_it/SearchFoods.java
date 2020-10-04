@@ -53,7 +53,6 @@ private String SearchInput;
         FirebaseRecyclerOptions<Foods> options=new FirebaseRecyclerOptions.Builder<Foods>()
                 .setQuery(reference.orderByChild("fname").startAt(SearchInput).endAt(SearchInput),Foods.class)
                 .build();
-
         FirebaseRecyclerAdapter<Foods, ProductViewHolder> adapter=
                 new FirebaseRecyclerAdapter<Foods, ProductViewHolder>(options) {
             @Override
@@ -73,7 +72,6 @@ private String SearchInput;
                 });
 //                    end in here
             }
-
             @NonNull
             @Override
             public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

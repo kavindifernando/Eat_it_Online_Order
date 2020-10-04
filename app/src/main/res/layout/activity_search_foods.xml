@@ -31,7 +31,7 @@ android:layout_marginTop="150dp"
             android:layout_marginEnd="5dp"
             android:layout_toEndOf="@+id/productName"
             android:layout_toRightOf="@+id/product_name"
-            android:text="Button"
+            android:text="Search"
             android:background="@drawable/button3"/>
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView

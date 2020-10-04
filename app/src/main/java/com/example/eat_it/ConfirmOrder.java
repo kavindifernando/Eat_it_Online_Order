@@ -70,14 +70,9 @@ private  String totalPrice="";
         final String saveCurrentDate;
         final String driverName= "none";
         final String status1;
-        Calendar calForDate= Calendar.getInstance() ;
-
-        SimpleDateFormat currentDate=new SimpleDateFormat("MMM dd, yyyy");
-        saveCurrentDate =currentDate.format(calForDate.getTime());
-
-        SimpleDateFormat currentTime=new SimpleDateFormat("HH:mm:ss a");
+        Calendar calForDate= Calendar.getInstance() ;SimpleDateFormat currentDate=new SimpleDateFormat("MMM dd, yyyy");
+        saveCurrentDate =currentDate.format(calForDate.getTime());SimpleDateFormat currentTime=new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime =currentDate.format(calForDate.getTime());
-
         final DatabaseReference finalOrderListRef=FirebaseDatabase.getInstance().getReference().child("Order List")
                 .child(Prevalent.currentOnlineCustomer.getPhone());
         HashMap<String,Object> orderMap = new HashMap<>();
@@ -91,16 +86,13 @@ private  String totalPrice="";
         orderMap.put("time",saveCurrentTime);
         orderMap.put("driver name",driverName);
         orderMap.put("status1","not Shipped");
-
         finalOrderListRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     FirebaseDatabase.getInstance().getReference().child("CartList")
-                            .child("Customer View")
-                            .child(Prevalent.currentOnlineCustomer.getPhone())
-                            .removeValue()
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            .child("Customer View").child(Prevalent.currentOnlineCustomer.getPhone())
+                            .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
